@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="BANK-SYSTEM2024-3" author="paulouskiyulyan@gmail.com">
+        <comment>Create table Accounts</comment>
+        <createTable tableName="accounts">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_accounts"/>
+            </column>
+            <column name="number" type="varchar(15)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="cash" type="decimal(7,2)" defaultValue="0.00">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints referencedTableName="users"
+                             referencedColumnNames="id"
+                             foreignKeyName="fk_account_users"
+                             deleteCascade="true"
+                             nullable="false"/>
+            </column>
+            <column name="bank_id" type="bigint">
+                <constraints referencedTableName="banks"
+                             referencedColumnNames="id"
+                             foreignKeyName="fk_account_banks"
+                             deleteCascade="true"
+                             nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

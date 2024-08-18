@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: BankSystem
+  liquibase:
+    change-log: db.changelog/changelog.xml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank_system
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
