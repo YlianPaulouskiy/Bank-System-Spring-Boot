@@ -108,6 +108,34 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>by.aston.bank.model.*</excludes>
+                    <excludes>by.aston.bank.repository.*</excludes>
+                    <excludes>by.aston.bank.service.dto.*</excludes>
+                    <excludes>by.aston.bank.service.mapper.*</excludes>
+                    <excludes>by.aston.bank.utils.JsonHelper</excludes>
+                    <outputDirectory>target/jacoco</outputDirectory>
+                    <formats>HTML</formats>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
